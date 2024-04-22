@@ -23,6 +23,6 @@ jobs:
   
     - name: Upload Artifa
       uses: actions/upload-artifact@v3
-        with:
+      with:
           path: D:\a\stl60\stl60\msvc
           name: exe-windows.zip
