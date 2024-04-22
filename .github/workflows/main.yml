@@ -1,0 +1,28 @@
+name: C Compilation
+
+on: push
+
+jobs:
+  build:
+    runs-on: windows-2019
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Set up C compiler
+      uses: jmatsu/setup-actions-toolkit@v1
+      with:
+        toolkit-feed: mcr.microsoft.com/vscode/devcontainers/toolkit-feed
+        tools: clang
+
+    - name: Compile C code
+      run: |
+        clang -o generate.exe generate.c
+        .\generate.exe
+  
+    - name: Upload Artifa
+      uses: actions/upload-artifact@v3
+        with:
+          path: D:\a\stl60\stl60\msvc
+          name: exe-windows.zip
