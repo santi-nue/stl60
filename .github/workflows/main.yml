@@ -18,6 +18,8 @@ jobs:
       shell: cmd
       run: |
           "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VC\Auxiliary\Build\vcvarsall.bat" x64
+          d:
+          cd D:\a\stl60\stl60
           cl generate.c
           generate.exe
 
