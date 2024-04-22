@@ -14,11 +14,11 @@ jobs:
       uses: jmatsu/setup-actions-toolkit@v1
       with:
         toolkit-feed: mcr.microsoft.com/vscode/devcontainers/toolkit-feed
-        tools: clang
+        tools: cl
 
     - name: Compile C code
       run: |
-        clang -o generate.exe generate.c
+        cl generate.c
         .\generate.exe
   
     - name: Upload Artifa
