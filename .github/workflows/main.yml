@@ -10,16 +10,17 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v2
 
-    - name: Set up C compiler
-      uses: jmatsu/setup-actions-toolkit@v1
-      with:
-        toolkit-feed: mcr.microsoft.com/vscode/devcontainers/toolkit-feed
-        tools: cl
+    - uses: microsoft/setup-msbuild@v1.1
 
-    - name: Compile C code
+    - uses: ilammy/msvc-dev-cmd@v1
+    
+    - name: Set up MSVC environment
+      shell: cmd
       run: |
-        cl generate.c
-        .\generate.exe
+          "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VC\Auxiliary\Build\vcvarsall.bat" x64
+          cl generate.c
+          generate.exe
+
   
     - name: Upload Artifa
       uses: actions/upload-artifact@v3
